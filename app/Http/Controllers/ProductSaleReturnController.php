@@ -24,7 +24,7 @@ class ProductSaleReturnController extends Controller
 
     public function index()
     {
-        $productSaleReturns = ProductSaleReturn::all();
+        $productSaleReturns = ProductSaleReturn::latest()->get();
         //dd($productSaleReturns);
         return view('backend.productSaleReturn.index',compact('productSaleReturns'));
     }
@@ -42,7 +42,7 @@ class ProductSaleReturnController extends Controller
     public function show($id)
     {
         $productSaleReturn = ProductSaleReturn::find($id);
-        $productSaleReturnDetails = ProductSaleReturnDetail::where('product_sale_return_id',$id)->get();
+        $productSaleReturnDetails = ProductSaleReturnDetail::where('product_sale_return_id',$id)->latest()->get();
 
         return view('backend.productSaleReturn.show', compact('productSaleReturn','productSaleReturnDetails'));
     }
@@ -63,7 +63,7 @@ class ProductSaleReturnController extends Controller
     }
 
     public function returnableSaleProduct(){
-        $returnable_sale_products = ProductSaleDetail::where('return_type','returnable')->get();
+        $returnable_sale_products = ProductSaleDetail::where('return_type','returnable')->latest()->get();
         //dd($returnable_sale_products);
         return view('backend.productSaleReturn.returnable_sale_products',compact('returnable_sale_products'));
     }
