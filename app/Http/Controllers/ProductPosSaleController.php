@@ -395,6 +395,7 @@ class ProductPosSaleController extends Controller
         $productSale->due_amount = $due_amount;
         $productSale->sale_type = 'pos';
         $productSale->save();
+        //dd($productSale);
         $insert_id = $productSale->id;
         if($insert_id)
         {
