@@ -10,17 +10,17 @@
     <main class="app-content">
         <div class="app-title">
             <div>
-                <h1><i class=""></i> Add Sales Product</h1>
+                <h1><i class=""></i> Add Whole Sales Product</h1>
             </div>
             <ul class="app-breadcrumb breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="{{ route('productSales.index') }}" class="btn btn-sm btn-primary col-sm" type="button">All Sales Product</a>
+                    <a href="{{ route('productSales.index') }}" class="btn btn-sm btn-primary col-sm" type="button">All Whole Sales Product</a>
                 </li>
             </ul>
         </div>
         <div class="col-md-12">
             <div class="tile">
-                <h3 class="tile-title">Add Sales Product</h3>
+                <h3 class="tile-title">Add Whole Sales Product</h3>
                 <div class="tile-body tile-footer">
                     @if(session('response'))
                         <div class="alert alert-success">
@@ -65,11 +65,10 @@
                                 <textarea class="form-control" name="address"></textarea>
                             </div>
                         </div>
-                        <div class="form-group row" @if(Auth::user()->roles[0]->name == 'User') style="display: none" @endif>
+                        <div style="display: none" class="form-group row" @if(Auth::user()->roles[0]->name == 'User') style="display: none" @endif>
                             <label class="control-label col-md-3 text-right">Store  <small class="requiredCustom">*</small></label>
                             <div class="col-md-8">
                                 <select name="store_id" id="store_id" class="form-control" >
-                                    <option value="">Select One</option>
                                     @foreach($stores as $store)
                                         <option value="{{$store->id}}" {{Auth::user()->roles[0]->name == 'User' ? 'selected':''}}>{{$store->name}} </option>
                                     @endforeach
@@ -81,25 +80,26 @@
                             <div class="col-md-8">
                                 <select name="payment_type" id="payment_type" class="form-control" >
                                     <option value="">Select One</option>
-                                    <option value="cash">cash</option>
+                                    <option value="cash" selected>cash</option>
                                     <option value="online">online</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="control-label col-md-3 text-right">Delivery Services  <small class="requiredCustom">*</small></label>
+                            <label class="control-label col-md-3 text-right">Delivery Services </label>
                             <div class="col-md-8">
-                                <select name="delivery_service" id="delivery_service" class="form-control" >
-                                    <option value="">Select One</option>
-                                    <option value="Sundorban Kuriar Service">Sundorban Kuriar Service</option>
-                                    <option value="SA Paribahan">SA Paribahan</option>
-                                </select>
+{{--                                <select name="delivery_service" id="delivery_service" class="form-control" >--}}
+{{--                                    <option value="">Select One</option>--}}
+{{--                                    <option value="Sundorban Kuriar Service">Sundorban Kuriar Service</option>--}}
+{{--                                    <option value="SA Paribahan">SA Paribahan</option>--}}
+{{--                                </select>--}}
+                                <input type="text" class="form-control" name="delivery_service" value="" />
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="control-label col-md-3 text-right">Delivery Services Charge <small class="requiredCustom">*</small></label>
+                            <label class="control-label col-md-3 text-right">Delivery Services Charge </label>
                             <div class="col-md-8">
                                 <input type="number" class="form-control" name="delivery_service_charge" value="" />
                             </div>
@@ -114,7 +114,7 @@
                                 <th>Category</th>
                                 <th>Sub Category</th>
                                 <th>Brand</th>
-                                <th>Return</th>
+                                <th style="display: none">Return</th>
                                 <th>Stock Qty</th>
                                 <th>Qty <small class="requiredCustom">*</small></th>
                                 <th>Price <small class="requiredCustom">*</small></th>
@@ -164,7 +164,7 @@
                                         </select>
                                     </div>
                                 </td>
-                                <td width="12%">
+                                <td width="12%" style="display: none">
                                     <select name="return_type[]" id="return_type_id_1" class="form-control" >
                                         <option value="returnable" selected>returnable</option>
                                         <option value="not returnable">not returnable</option>
@@ -341,7 +341,7 @@
                     '<td><div id="product_category_id_'+n+'"><select class="form-control product_category_id select2" name="product_category_id[]" required>' + productCategory + '</select></div></td>' +
                     '<td><div id="product_sub_category_id_'+n+'"><select class="form-control product_sub_category_id select2" name="product_sub_category_id[]" required>' + productSubCategory + '</select></div></td>' +
                     '<td><div id="product_brand_id_'+n+'"><select class="form-control product_brand_id select2" name="product_brand_id[]" id="product_brand_id_'+n+'" required>' + productBrand + '</select></div></td>' +
-                    '<td><select name="return_type[]" id="return_type_id_'+n+'" class="form-control" ><option value="returnable" selected>returnable</option><option value="not returnable">not returnable</option></select></td>' +
+                    '<td style="display: none"><select name="return_type[]" id="return_type_id_'+n+'" class="form-control" ><option value="returnable" selected>returnable</option><option value="not returnable">not returnable</option></select></td>' +
                     '<td><input type="number" id="stock_qty_'+n+'" class="stock_qty form-control" name="stock_qty[]"></td>' +
                     '<td><input type="number" min="1" max="" class="qty form-control" name="qty[]" required></td>' +
                     '<td><input type="text" id="price_'+n+'" min="1" max="" class="price form-control" name="price[]" value="" readonly required></td>' +

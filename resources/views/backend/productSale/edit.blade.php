@@ -4,17 +4,17 @@
     <main class="app-content">
         <div class="app-title">
             <div>
-                <h1><i class=""></i> Edit Sale Product</h1>
+                <h1><i class=""></i> Edit Whole Sale Product</h1>
             </div>
             <ul class="app-breadcrumb breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="{{ route('productSales.index') }}" class="btn btn-sm btn-primary col-sm" type="button">All Sale Product</a>
+                    <a href="{{ route('productSales.index') }}" class="btn btn-sm btn-primary col-sm" type="button">All Whole Sale Product</a>
                 </li>
             </ul>
         </div>
         <div class="col-md-12">
             <div class="tile">
-                <h3 class="tile-title">Edit Sale Product</h3>
+                <h3 class="tile-title">Edit Whole Sale Product</h3>
                 <div class="tile-body tile-footer">
                     @if(session('response'))
                         <div class="alert alert-success">
@@ -49,11 +49,10 @@
                                 <textarea class="form-control" name="address">{{$party->address}}</textarea>
                             </div>
                         </div>
-                        <div class="form-group row" @if(Auth::user()->roles[0]->name == 'User') style="display: none" @endif>
+                        <div style="display: none" class="form-group row" @if(Auth::user()->roles[0]->name == 'User') style="display: none" @endif>
                             <label class="control-label col-md-3 text-right">Store  <small class="requiredCustom">*</small></label>
                             <div class="col-md-8">
                                 <select name="store_id" id="store_id" class="form-control" >
-                                    <option value="">Select One</option>
                                     @foreach($stores as $store)
                                         <option value="{{$store->id}}" {{$store->id == $productSale->store_id ? 'selected' : ''}}>{{$store->name}} </option>
                                     @endforeach
@@ -75,7 +74,6 @@
                             <label class="control-label col-md-3 text-right">Payment Type  <small class="requiredCustom">*</small></label>
                             <div class="col-md-8">
                                 <select name="payment_type" id="payment_type" class="form-control" >
-                                    <option value="">Select One</option>
                                     <option value="cash" {{'cash' == $productSale->payment_type ? 'selected' : ''}}>cash</option>
                                     <option value="online" {{'online' == $productSale->payment_type ? 'selected' : ''}}>online</option>
                                 </select>
@@ -84,16 +82,17 @@
                         <div class="form-group row">
                             <label class="control-label col-md-3 text-right">Delivery Services  <small class="requiredCustom">*</small></label>
                             <div class="col-md-8">
-                                <select name="delivery_service" id="delivery_service" class="form-control" >
-                                    <option value="">Select One</option>
-                                    <option value="Sundorban Kuriar Service" {{'Sundorban Kuriar Service' == $productSale->delivery_service ? 'selected' : ''}}>Sundorban Kuriar Service</option>
-                                    <option value="SA Paribahan" {{'SA Paribahan' == $productSale->delivery_service ? 'selected' : ''}}>SA Paribahan</option>
-                                </select>
+{{--                                <select name="delivery_service" id="delivery_service" class="form-control" >--}}
+{{--                                    <option value="">Select One</option>--}}
+{{--                                    <option value="Sundorban Kuriar Service" {{'Sundorban Kuriar Service' == $productSale->delivery_service ? 'selected' : ''}}>Sundorban Kuriar Service</option>--}}
+{{--                                    <option value="SA Paribahan" {{'SA Paribahan' == $productSale->delivery_service ? 'selected' : ''}}>SA Paribahan</option>--}}
+{{--                                </select>--}}
+                                <input type="text" class="form-control" name="delivery_service" value="{{$productSale->delivery_service}}" />
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="control-label col-md-3 text-right">Delivery Services Charge <small class="requiredCustom">*</small></label>
+                            <label class="control-label col-md-3 text-right">Delivery Services Charge </label>
                             <div class="col-md-8">
                                 <input type="number" class="form-control" name="delivery_service_charge" value="{{$productSale->delivery_service_charge}}" />
                             </div>
@@ -107,7 +106,7 @@
                                 <th>Category</th>
                                 <th>Sub Category</th>
                                 <th>Brand</th>
-                                <th>Returnable</th>
+                                <th style="display: none">Returnable</th>
                                 <th>Qty</th>
                                 <th>Price</th>
                                 <th>Sub Total</th>
@@ -158,7 +157,7 @@
                                             </select>
                                         </div>
                                     </td>
-                                    <td width="12%">
+                                    <td width="12%" style="display: none">
                                         <select name="return_type[]" id="return_type_id_{{$current_row}}" class="form-control" >
                                             <option value="returnable"  {{'returnable' == $productSaleDetail->return_type ? 'selected' : ''}}>returnable</option>
                                             <option value="not returnable" {{'not returnable' == $productSaleDetail->return_type ? 'selected' : ''}}>not returnable</option>
@@ -181,8 +180,8 @@
                                 <th colspan="2">
                                     Discount Type:
                                     <select name="discount_type" id="discount_type" class="form-control" >
-                                        <option value="flat" {{'flat' == $productSale->return_type ? 'selected' : ''}}>flat</option>
-                                        <option value="percentage" {{'percentage' == $productSale->return_type ? 'selected' : ''}}>percentage</option>
+                                        <option value="flat" {{'flat' == $productSale->discount_type ? 'selected' : ''}}>flat</option>
+                                        <option value="percentage" {{'percentage' == $productSale->discount_type ? 'selected' : ''}}>percentage</option>
                                     </select>
                                 </th>
                                 <th>
