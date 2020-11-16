@@ -9,17 +9,17 @@
     <main class="app-content">
         <div class="app-title">
             <div>
-                <h1><i class=""></i> Edit Purchases Product</h1>
+                <h1><i class=""></i> Edit Purchases/Stock In</h1>
             </div>
             <ul class="app-breadcrumb breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="{{ route('party.index') }}" class="btn btn-sm btn-primary col-sm" type="button">All Purchases Product</a>
+                    <a href="{{ route('party.index') }}" class="btn btn-sm btn-primary col-sm" type="button">All Purchases/Stock In</a>
                 </li>
             </ul>
         </div>
         <div class="col-md-12">
             <div class="tile">
-                <h3 class="tile-title">Edit Purchases Product</h3>
+                <h3 class="tile-title">Edit Purchases/Stock In</h3>
                 <div class="tile-body tile-footer">
                     @if(session('response'))
                         <div class="alert alert-success">
@@ -33,7 +33,6 @@
                             <label class="control-label col-md-3 text-right">Store  <small class="requiredCustom">*</small></label>
                             <div class="col-md-8">
                                 <select name="store_id" id="store_id" class="form-control" >
-                                    <option value="">Select One</option>
                                     @foreach($stores as $store)
                                         <option value="{{$store->id}}" {{$store->id == $productPurchase->store_id ? 'selected' : ''}}>{{$store->name}} </option>
                                     @endforeach
@@ -44,7 +43,6 @@
                             <label class="control-label col-md-3 text-right">Party  <small class="requiredCustom">*</small></label>
                             <div class="col-md-8">
                                 <select name="party_id" id="party_id" class="form-control select2">
-                                    <option value="">Select One</option>
                                     @foreach($parties as $party)
                                         <option value="{{$party->id}}" {{$party->id == $productPurchase->party_id ? 'selected' : ''}}>{{$party->name}} </option>
                                     @endforeach
@@ -55,7 +53,6 @@
                             <label class="control-label col-md-3 text-right">Payment Type  <small class="requiredCustom">*</small></label>
                             <div class="col-md-8">
                                 <select name="payment_type" id="payment_type" class="form-control" >
-                                    <option value="">Select One</option>
                                     <option value="cash" {{'cash' == $productPurchase->payment_type ? 'selected' : ''}}>cash</option>
                                     <option value="online" {{'online' == $productPurchase->payment_type ? 'selected' : ''}}>online</option>
                                 </select>
