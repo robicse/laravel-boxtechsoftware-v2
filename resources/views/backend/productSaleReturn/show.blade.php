@@ -13,7 +13,8 @@
         <div class="col-md-12">
             <div class="tile">
                 <h3 class="tile-title">Product Sales Returns</h3>
-                <table class="table table-striped">
+                <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
                     <thead>
                     <tr>
                     </tr>
@@ -49,14 +50,16 @@
                     </tr>
                     </tbody>
                 </table>
-                <div class="tile-footer">
+                    <div class="tile-footer">
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-12">
             <div class="tile">
                 <h3 class="tile-title">Product Sales Details</h3>
-                <table class="table table-striped">
+                <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
                     <thead>
                     <tr>
                         <th>Category</th>
@@ -88,7 +91,8 @@
                     @endforeach
                     </tbody>
                 </table>
-                <div class="tile-footer">
+                    <div class="tile-footer">
+                    </div>
                 </div>
             </div>
         </div>

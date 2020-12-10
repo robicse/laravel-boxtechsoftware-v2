@@ -17,7 +17,8 @@
                     @foreach($stores as $store)
                         <div class="col-md-12">
                             <h1 class="text-center">{{$store->name}}</h1>
-                            <table id="example1" class="table table-bordered table-striped">
+                            <div class="table-responsive">
+                                <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
 {{--                                    <th width="10%">Category</th>--}}
@@ -159,21 +160,22 @@
                                 </tbody>
                             </table>
 
-                            <table>
-                                <thead>
-                                <tr>
-                                    <th colspan="10">Sum Loss/Profit: </th>
-                                    <th>
-                                        @if($sum_loss_or_profit > 0)
-                                            Profit: {{$sum_loss_or_profit}}
-                                        @else
-                                            Loss: {{$sum_loss_or_profit}}
-                                        @endif
-                                    </th>
-                                </tr>
-                                </thead>
-                            </table>
-                            <div class="tile-footer">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th colspan="10">Sum Loss/Profit: </th>
+                                        <th>
+                                            @if($sum_loss_or_profit > 0)
+                                                Profit: {{$sum_loss_or_profit}}
+                                            @else
+                                                Loss: {{$sum_loss_or_profit}}
+                                            @endif
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                                <div class="tile-footer">
+                                </div>
                             </div>
                         </div>
                     @endforeach

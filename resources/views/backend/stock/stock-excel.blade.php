@@ -1,6 +1,7 @@
 @if(!empty($stores))
     @foreach($stores as $store)
-<table class="table table-bordered mt-3">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>{{$store->name}}</th>
@@ -35,5 +36,6 @@
         @endif
     </tbody>
 </table>
+        </div>
     @endforeach
 @endif

@@ -104,9 +104,9 @@
                                 <input type="number" class="form-control" name="delivery_service_charge" value="" />
                             </div>
                         </div>
-
-                        <input type="button" class="btn btn-primary add " style="margin-left: 804px;" value="Add More Product">
-                        <table class="table table-striped">
+                        <div class="table-responsive">
+                            <input type="button" class="btn btn-primary add " style="margin-left: 804px;" value="Add More Product">
+                            <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
                                 <th >ID</th>
@@ -215,11 +215,12 @@
                             </tr>
                             </tfoot>
                         </table>
-                        <div class="form-group row">
-                            <label class="control-label col-md-3"></label>
-                            <div class="col-md-8">
-                                <label class="checkbox-inline"><input type="checkbox" name="print_now" value="1"> Redirect Print Page</label>
-                                <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Save Product Sale</button>
+                            <div class="form-group row">
+                                <label class="control-label col-md-3"></label>
+                                <div class="col-md-8">
+                                    <label class="checkbox-inline"><input type="checkbox" name="print_now" value="1"> Redirect Print Page</label>
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Save Product Sale</button>
+                                </div>
                             </div>
                         </div>
                     </form>

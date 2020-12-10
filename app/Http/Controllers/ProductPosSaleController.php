@@ -192,6 +192,7 @@ class ProductPosSaleController extends Controller
                     <div class=\"form-group row\">
                     <div class=\"col-md-8\">
                     <input type=\"hidden\" name=\"_token\" value=\"".csrf_token()."\" />
+                    <div class=\"table-responsive\">
                     <table class=\"table table-striped tabel-penjualan\">
                         <thead>
                             <tr>
@@ -223,7 +224,7 @@ class ProductPosSaleController extends Controller
         $html .= "</tbody>
                     </table>
                     </div>
-
+                    </div>
                     <div class=\"col-md-4\">
                         <div class=\"form-group row\">
                             <label for=\"sub_total\" class=\"col-md-4 control-label\">Sub Total</label>
