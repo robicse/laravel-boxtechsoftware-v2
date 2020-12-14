@@ -25,6 +25,23 @@
                         @method('PUT')
                         @csrf
                         <div class="form-group row">
+                            <label class="control-label col-md-3 text-right">Store User <span style="color: red">*</span></label>
+                            <div class="col-md-8">
+                                <select name="store_id" id="store_id" class="form-control">
+                                    <option value="">Select One</option>
+                                    @foreach($stores as $store)
+                                        <option value="{{$store->id}}" {{$store->id == $user->store_id ? 'selected' : ''}}>{{$store->name}}</option>
+                                    @endforeach()
+                                </select>
+                                @if ($errors->has('store_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('store_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label class="control-label col-md-3 text-right">User Name <span style="color: red">*</span></label>
                             <div class="col-md-8">
                                 <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" placeholder="User Name" name="name" value="{!! $user->name !!}">
@@ -69,9 +86,15 @@
                         <div class="form-group row">
                             <label for="" class="col-md-3 col-form-label text-md-right">Role <span style="color: red">*</span></label>
 
-                            <div class="col-md-8">
-                                {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
-                            </div>
+{{--                            <div class="col-md-8">--}}
+{{--                                {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}--}}
+{{--                            </div>--}}
+                            <select class="form-control" name="roles[]">
+                                @foreach($roles as $role)
+                                    <option value="{{$role->name}}" {{$role->name == $userRole ? 'selected' : ''}} >{{$role->name}}</option>
+                                @endforeach
+                            </select>
+
                         </div>
                         <div class="form-group row">
                             <label class="control-label col-md-3"></label>

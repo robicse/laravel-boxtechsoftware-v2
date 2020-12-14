@@ -82,13 +82,13 @@ class ProductPosSaleController extends Controller
 
 
 
-        $auth_user_id = Auth::user()->id;
+        $auth = Auth::user();
         $auth_user = Auth::user()->roles[0]->name;
         $parties = Party::where('type','customer')->get() ;
         if($auth_user == "Admin"){
             $stores = Store::all();
         }else{
-            $stores = Store::where('user_id',$auth_user_id)->get();
+            $stores = Store::where('id',$auth->store_id)->get();
         }
         $productCategories = ProductCategory::all();
         $productSubCategories = ProductSubCategory::all();
@@ -246,25 +246,26 @@ class ProductPosSaleController extends Controller
                         <div class=\"form-group row\">
                             <label for=\"vat_amount\" class=\"col-md-4 control-label\">Vat(Percentage)</label>
                             <div class=\"col-md-8\">
-                                <input type=\"number\" class=\"form-control\" name=\"vat_amount\" id=\"vat_amount\" onblur=\"vatAmount('')\" value=\"0.00\">
+                                <input type=\"number\" class=\"form-control\" name=\"vat_amount\" id=\"vat_amount\"  onkeyup=\"vatAmount('')\" value=\"0.00\">
                             </div>
                         </div>
                         <div class=\"form-group row\">
                             <label for=\"discount_amount\" class=\"col-md-4 control-label\">Discount(Flat)</label>
                             <div class=\"col-md-8\">
-                                <input type=\"number\" class=\"form-control\" name=\"discount_amount\" id=\"discount_amount\" onblur=\"discountAmount('')\" value=\"0.00\">
+                                <input type=\"number\" class=\"form-control\" name=\"discount_amount\" id=\"discount_amount\" onkeyup=\"discountAmount('')\" value=\"0\">
                             </div>
                         </div>
                         <div class=\"form-group row\">
                             <label for=\"grand_total\" class=\"col-md-4 control-label\">Grand Total</label>
                             <div class=\"col-md-8\">
+                                 <input type=\"hidden\" class=\"form-control\" id=\"store_grand_total\" value=\"".Cart::subtotal()."\" readonly>
                                 <input type=\"text\" class=\"form-control\" name=\"grand_total\" id=\"grand_total\" value=\"".Cart::subtotal()."\" readonly>
                             </div>
                         </div>
                         <div class=\"form-group row\">
                             <label for=\"paid_amount\" class=\"col-md-4 control-label\">Paid</label>
                             <div class=\"col-md-8\">
-                                <input type=\"number\" class=\"form-control\" value=\"0.00\" name=\"paid_amount\" onblur=\"paidAmount('')\" id=\"paid_amount\">
+                                <input type=\"number\" class=\"form-control\" value=\"0.00\" name=\"paid_amount\" onkeyup=\"paidAmount('')\" id=\"paid_amount\">
                             </div>
                         </div>
                         <div class=\"form-group row\">

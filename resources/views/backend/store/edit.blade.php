@@ -24,25 +24,25 @@
                     <form method="post" action="{{ route('stores.update',$store->id) }}" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
-                        <div class="form-group row">
-                            <label class="control-label col-md-3 text-right">Store User <span style="color: red">*</span></label>
-                            <div class="col-md-8">
-                                <select name="user_id" id="user_id" class="form-control">
-                                    <option value="">Select One</option>
-                                    @foreach($users as $user)
-                                        @php
-                                            $check_user_store = \App\Store::where('user_id',$user->id)->pluck('name')->first();
-                                        @endphp
-                                        <option value="{{$user->id}}" {{$user->id == $store->user_id ? 'selected' : ''}}>{{$user->name}} {{$check_user_store ? ' => '.$check_user_store : ''}}</option>
-                                    @endforeach()
-                                </select>
-                                @if ($errors->has('user_id'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('user_id') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+{{--                        <div class="form-group row">--}}
+{{--                            <label class="control-label col-md-3 text-right">Store User <span style="color: red">*</span></label>--}}
+{{--                            <div class="col-md-8">--}}
+{{--                                <select name="user_id" id="user_id" class="form-control">--}}
+{{--                                    <option value="">Select One</option>--}}
+{{--                                    @foreach($users as $user)--}}
+{{--                                        @php--}}
+{{--                                            $check_user_store = \App\Store::where('user_id',$user->id)->pluck('name')->first();--}}
+{{--                                        @endphp--}}
+{{--                                        <option value="{{$user->id}}" {{$user->id == $store->user_id ? 'selected' : ''}}>{{$user->name}} {{$check_user_store ? ' => '.$check_user_store : ''}}</option>--}}
+{{--                                    @endforeach()--}}
+{{--                                </select>--}}
+{{--                                @if ($errors->has('user_id'))--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $errors->first('user_id') }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="form-group row">
                             <label class="control-label col-md-3 text-right">Store Name <span style="color: red">*</span></label>
                             <div class="col-md-8">
