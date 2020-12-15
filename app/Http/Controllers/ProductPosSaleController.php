@@ -246,7 +246,7 @@ class ProductPosSaleController extends Controller
                         <div class=\"form-group row\">
                             <label for=\"vat_amount\" class=\"col-md-4 control-label\">Vat(Percentage)</label>
                             <div class=\"col-md-8\">
-                                <input type=\"number\" class=\"form-control\" name=\"vat_amount\" id=\"vat_amount\"  onkeyup=\"vatAmount('')\" value=\"0.00\">
+                                <input type=\"number\" class=\"form-control\" name=\"vat_amount\" id=\"vat_amount\"  onkeyup=\"vatAmount('')\" value=\"0\">
                             </div>
                         </div>
                         <div class=\"form-group row\">
